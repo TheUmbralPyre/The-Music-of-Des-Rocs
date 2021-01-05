@@ -1,11 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="The_Music_of_Des_Rocs.Views.MainPage"
-             Title="{Binding Title}">
+             NavigationPage.HasNavigationBar="False">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <ContentPage.Background>
+        <RadialGradientBrush>
+            <GradientStop Color="#6e1617" Offset="0.0"/>
+            <GradientStop Color="#5e1617" Offset="0.5"/>
+            <GradientStop Color="#4e1617" Offset="1.0"/>
+        </RadialGradientBrush>
+    </ContentPage.Background>
 
+    <ContentPage.Content>
+        <Grid>
+            
+            <Image Source="Stencil.png" Aspect="AspectFit"
+                   Opacity="0.1" Margin="20"/>
+            
+            <CollectionView ItemsSource="{Binding Albums}" IsGrouped="True">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Grid Margin="20">
+
+                            <Image Source="{Binding Cover}" WidthRequest="150"
+                                   Aspect="AspectFill" HorizontalOptions="Start"/>
+
+                            <pv:PancakeView>
+
+                                <pv:PancakeView.Border>
+                                    <pv:Border Color="#4e1617" Thickness="4"/>
+                                </pv:PancakeView.Border>
+
+                                <pv:PancakeView.BackgroundGradientStops>
+                                    <pv:GradientStopCollection>
+                                        <pv:GradientStop Color="Transparent" Offset="0.0"/>
+                                        <pv:GradientStop Color="#7e1617" Offset="0.3"/>
+                                    </pv:GradientStopCollection>
+                                </pv:PancakeView.BackgroundGradientStops>
+
+                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    
+                                    <Label Text="{Binding Name}" FontSize="30"
+                                           HorizontalTextAlignment="Center" TextColor="Black"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Note}" FontSize="20"
+                                           HorizontalTextAlignment="Center" TextColor="White"/>
+                                    
+                                </StackLayout>
+
+                            </pv:PancakeView>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+
+                            <Image Source="{Binding Cover}" WidthRequest="150"
+                                   HorizontalOptions="End"/>
+
+                            <pv:PancakeView Padding="20">
+
+                                <pv:PancakeView.BackgroundGradientStops>
+                                    <pv:GradientStopCollection>
+                                        <pv:GradientStop Color="#1e1617" Offset="0.65"/>
+                                        <pv:GradientStop Color="Transparent" Offset="1.0"/>
+                                    </pv:GradientStopCollection>
+                                </pv:PancakeView.BackgroundGradientStops>
+
+                                <Label Text="{Binding Name}" FontSize="30"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       TextColor="#9e1617" FontAttributes="Bold"/>
+
+                            </pv:PancakeView>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            
+        </Grid>
+    </ContentPage.Content>
+    
 </ContentPage>
