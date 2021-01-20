@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="The_Music_of_Des_Rocs.Controls.PancakeViewIntegratedImage">
+    <ContentView.Content>
+        <Grid>
+
+            <Image x:Name="IntegratedImage" WidthRequest="150"
+                   HorizontalOptions="End"/>
+
+            <pv:PancakeView x:Name="IntegratedPancake" Padding="20">
+
+                <pv:PancakeView.BackgroundGradientStops>
+                    <pv:GradientStopCollection>
+                        <pv:GradientStop Color="#1e1617" Offset="0.65"/>
+                        <pv:GradientStop Color="Transparent" Offset="1.0"/>
+                    </pv:GradientStopCollection>
+                </pv:PancakeView.BackgroundGradientStops>
+
+                <Label x:Name="IntegratedLabel" FontSize="30"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       TextColor="#9e1617" FontAttributes="Bold"/>
+
+            </pv:PancakeView>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

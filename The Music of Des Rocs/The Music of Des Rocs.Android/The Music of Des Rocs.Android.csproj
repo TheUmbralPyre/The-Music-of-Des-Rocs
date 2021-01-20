@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\SplashAnimation.json" />
+    <EmbeddedResource Include="Assets\materialdesignicons-webfont.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>

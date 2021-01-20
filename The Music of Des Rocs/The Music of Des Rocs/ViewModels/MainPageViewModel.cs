@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using The_Music_of_Des_Rocs.Models;
 
 namespace The_Music_of_Des_Rocs.ViewModels
@@ -18,6 +19,15 @@ namespace The_Music_of_Des_Rocs.ViewModels
             get { return albums; }
             set { SetProperty(ref albums, value); }
         }
+
+        private bool canExecute = true;
+        public bool CanExecute
+        {
+            get { return canExecute; }
+            set { SetProperty(ref canExecute, value); }
+        }
+
+        public DelegateCommand<Song> CommandSongSelected { get; set; }
 
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
@@ -45,6 +55,24 @@ namespace The_Music_of_Des_Rocs.ViewModels
                     LinkYoutube = "https://www.youtube.com/watch?v=7MrRi-2nokM"
                 }
             }));
+
+            CommandSongSelected = new DelegateCommand<Song>(SongSelected)
+                .ObservesCanExecute(() => CanExecute);
+        }
+
+        private async void SongSelected(Song song)
+        {
+            CanExecute = false;
+
+            await Task.Delay(400);
+
+            var navParams = new NavigationParameters();
+
+            navParams.Add("SelectedSong", song);
+
+            await NavigationService.NavigateAsync("SongDetails", navParams);
+
+            CanExecute = true;
         }
     }
 }

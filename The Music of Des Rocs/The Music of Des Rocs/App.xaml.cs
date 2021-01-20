@@ -28,6 +28,7 @@ namespace The_Music_of_Des_Rocs
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SongDetails, SongDetailsViewModel>();
         }
     }
 }

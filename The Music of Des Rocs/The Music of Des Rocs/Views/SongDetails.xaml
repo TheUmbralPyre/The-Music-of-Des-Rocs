@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:helpers="clr-namespace:The_Music_of_Des_Rocs.Helpers"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="The_Music_of_Des_Rocs.Views.SongDetails"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <ContentPage.Content>
+        <Grid>
+
+            <Image Source="{Binding SelectedSong.Cover}" 
+                   VerticalOptions="StartAndExpand"
+                   HeightRequest="500" Aspect="AspectFill"/>
+
+            <BoxView>
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#406e1617" Offset="0.0"/>
+                        <GradientStop Color="#5e1617" Offset="0.5"/>
+                        <GradientStop Color="#4e1617" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <ScrollView>
+                
+                <StackLayout VerticalOptions="Center" Margin="0, 40">
+
+                    <pv:PancakeView>
+
+                        <pv:PancakeView.BackgroundGradientStops>
+                            <pv:GradientStopCollection>
+                                <pv:GradientStop Color="Transparent" Offset="0.0"/>
+                                <pv:GradientStop Color="#6e1617" Offset="0.5"/>
+                                <pv:GradientStop Color="Transparent" Offset="1.0"/>
+                            </pv:GradientStopCollection>
+                        </pv:PancakeView.BackgroundGradientStops>
+
+                        <StackLayout>
+
+                            <Label Text="{Binding SelectedSong.Name}" FontSize="50"
+                                   HorizontalTextAlignment="Center" TextColor="Black"
+                                   FontAttributes="Bold"/>
+                            
+                            <Label Text="{Binding SelectedSong.Note}" FontSize="30"
+                                   HorizontalTextAlignment="Center" TextColor="White"/>
+
+                        </StackLayout>
+                        
+                    </pv:PancakeView>
+
+                    <Label Text="{Binding SelectedSong.Lyrics}" FontSize="15"
+                           HorizontalTextAlignment="Center" TextColor="White"
+                           Margin="0,0,0,90"/>
+
+                </StackLayout>
+                
+            </ScrollView>
+
+            <pv:PancakeView VerticalOptions="End" Margin="0,0,0,-10">
+
+                <pv:PancakeView.BackgroundGradientStops>
+                    <pv:GradientStopCollection>
+                        <pv:GradientStop Color="Transparent" Offset="0.0"/>
+                        <pv:GradientStop Color="#6e1617" Offset="0.5"/>
+                        <pv:GradientStop Color="Transparent" Offset="1.0"/>
+                    </pv:GradientStopCollection>
+                </pv:PancakeView.BackgroundGradientStops>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                    <ImageButton Source="{FontImage FontFamily=materialdesignicons-webfont.ttf#materialdesignicons,
+                                 Glyph={x:Static helpers:IconFonts.Youtube}, Color=DarkRed, Size=90}" BackgroundColor="Transparent"
+                                 Command="{Binding OpenSongOnYoutube}"/>
+
+                    <ImageButton Source="{FontImage FontFamily=materialdesignicons-webfont.ttf#materialdesignicons,
+                                 Glyph={x:Static helpers:IconFonts.Spotify}, Color=DarkGreen, Size=70}" BackgroundColor="Transparent"
+                                 Command="{Binding OpenSongOnSpotify}"/>
+
+                </StackLayout>
+                
+            </pv:PancakeView>
+
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>
