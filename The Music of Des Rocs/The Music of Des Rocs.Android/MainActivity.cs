@@ -12,7 +12,7 @@ namespace The_Music_of_Des_Rocs.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Xamarin.Forms.Forms.SetFlags(new string[] { "Brush_Experimental" });
+            Xamarin.Forms.Forms.SetFlags(new string[] { "Brush_Experimental", "Shapes_Experimental" });
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

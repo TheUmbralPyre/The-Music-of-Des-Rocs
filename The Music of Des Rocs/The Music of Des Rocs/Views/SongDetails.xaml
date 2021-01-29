@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com" 
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:helpers="clr-namespace:The_Music_of_Des_Rocs.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="The_Music_of_Des_Rocs.Views.SongDetails"
              NavigationPage.HasNavigationBar="False">
@@ -34,17 +33,17 @@
 
                         <pv:PancakeView.BackgroundGradientStops>
                             <pv:GradientStopCollection>
-                                <pv:GradientStop Color="Transparent" Offset="0.0"/>
-                                <pv:GradientStop Color="#6e1617" Offset="0.5"/>
-                                <pv:GradientStop Color="Transparent" Offset="1.0"/>
+                                <pv:GradientStop Color="#50000000" Offset="0.0"/>
+                                <pv:GradientStop Color="Black" Offset="0.5"/>
+                                <pv:GradientStop Color="#50000000" Offset="1.0"/>
                             </pv:GradientStopCollection>
                         </pv:PancakeView.BackgroundGradientStops>
 
                         <StackLayout>
 
-                            <Label Text="{Binding SelectedSong.Name}" FontSize="50"
-                                   HorizontalTextAlignment="Center" TextColor="Black"
-                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding SelectedSong.Name}" FontSize="65"
+                                   HorizontalTextAlignment="Center" TextColor="#9e1617"
+                                   FontAttributes="Bold" LineBreakMode="WordWrap"/>
                             
                             <Label Text="{Binding SelectedSong.Note}" FontSize="30"
                                    HorizontalTextAlignment="Center" TextColor="White"/>
@@ -66,20 +65,33 @@
                 <pv:PancakeView.BackgroundGradientStops>
                     <pv:GradientStopCollection>
                         <pv:GradientStop Color="Transparent" Offset="0.0"/>
-                        <pv:GradientStop Color="#6e1617" Offset="0.5"/>
+                        <pv:GradientStop Color="Black" Offset="0.5"/>
                         <pv:GradientStop Color="Transparent" Offset="1.0"/>
                     </pv:GradientStopCollection>
                 </pv:PancakeView.BackgroundGradientStops>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" 
+                             Padding="5, 10" Spacing="15">
 
-                    <ImageButton Source="{FontImage FontFamily=materialdesignicons-webfont.ttf#materialdesignicons,
-                                 Glyph={x:Static helpers:IconFonts.Youtube}, Color=DarkRed, Size=90}" BackgroundColor="Transparent"
-                                 Command="{Binding OpenSongOnYoutube}"/>
+                    <Path Fill="DarkRed" Aspect="Fill" 
+                          WidthRequest="80" HeightRequest="75"
+                          Data="M 100 0C 45 0 0 45 0 100C 0 100 0 900 0 900C 0 955 45 1000 100 1000C 100 1000 900 1000 900 1000C 955 1000 1000 955 1000 900C 1000 900 1000 100 1000 100C 1000 45 955 0 900 0C 900 0 100 0 100 0C 100 0 100 0 100 0 M 500 275C 500 275 500 275 500 275C 500 275 703 275 754 288C 781 296 803 318 811 346C 825 396 824 502 824 502C 824 502 824 607 811 658C 803 686 781 707 754 715C 703 728 500 728 500 728C 500 728 298 728 246 714C 219 707 197 685 189 657C 176 607 176 501 176 501C 176 501 176 396 189 346C 197 318 219 295 246 288C 297 275 500 275 500 275M 435 404C 435 404 435 404 435 404C 435 404 435 599 435 599C 435 599 604 501 604 501C 604 501 435 404 435 404">
 
-                    <ImageButton Source="{FontImage FontFamily=materialdesignicons-webfont.ttf#materialdesignicons,
-                                 Glyph={x:Static helpers:IconFonts.Spotify}, Color=DarkGreen, Size=70}" BackgroundColor="Transparent"
-                                 Command="{Binding OpenSongOnSpotify}"/>
+                        <Path.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenSongOnYoutube}"/>
+                        </Path.GestureRecognizers>
+
+                    </Path>
+
+                    <Path Fill="DarkGreen" Aspect="Fill" 
+                          WidthRequest="80" HeightRequest="75"
+                          Data="M213.826,0C95.733,0,0,95.733,0,213.826s95.733,213.826,213.826,213.826 s213.826-95.733,213.826-213.826S331.919,0,213.826,0z M306.886,310.32c-2.719,4.652-7.612,7.246-12.638,7.247 c-2.506,0-5.044-0.645-7.364-2c-38.425-22.456-82.815-26.065-113.295-25.138c-33.763,1.027-58.523,7.692-58.769,7.76 c-7.783,2.126-15.826-2.454-17.961-10.236c-2.134-7.781,2.43-15.819,10.209-17.962c1.116-0.307,27.76-7.544,64.811-8.766 c21.824-0.72,42.834,0.801,62.438,4.52c24.83,4.71,47.48,12.978,67.322,24.574C308.612,294.393,310.96,303.349,306.886,310.32z M334.07,253.861c-3.22,5.511-9.016,8.583-14.97,8.584c-2.968,0-5.975-0.763-8.723-2.369c-45.514-26.6-98.097-30.873-134.2-29.776c-39.994,1.217-69.323,9.112-69.614,9.192c-9.217,2.515-18.746-2.906-21.275-12.124c-2.528-9.218,2.879-18.738,12.093-21.277c1.322-0.364,32.882-8.937,76.77-10.384c25.853-0.852,50.739,0.949,73.96,5.354c29.412,5.58,56.241,15.373,79.744,29.108C336.115,234.995,338.897,245.603,334.07,253.861z M350.781,202.526c-3.641,0-7.329-0.936-10.7-2.906c-108.207-63.238-248.572-25.643-249.977-25.255c-11.313,3.117-23.008-3.527-26.124-14.839c-3.117-11.312,3.527-23.008,14.839-26.124c1.621-0.447,40.333-10.962,94.166-12.737c31.713-1.044,62.237,1.164,90.72,6.567c36.077,6.844,68.987,18.856,97.815,35.704c10.13,5.92,13.543,18.931,7.623,29.061C365.193,198.757,358.084,202.526,350.781,202.526z">
+
+                        <Path.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenSongOnSpotify}"/>
+                        </Path.GestureRecognizers>
+                        
+                    </Path>
 
                 </StackLayout>
                 
